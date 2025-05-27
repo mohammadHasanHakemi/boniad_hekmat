@@ -19,7 +19,7 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
-        'email',
+        'username',
         'password',
     ];
 
@@ -32,17 +32,12 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
-
-    /**
-     * Get the attributes that should be cast.
-     *
-     * @return array<string, string>
-     */
-    protected function casts(): array
+        public function findForPassport($username)
     {
-        return [
-            'email_verified_at' => 'datetime',
-            'password' => 'hashed',
-        ];
+        return $this->where('username', $username)->first();
+    }
+    public function requests()
+    {
+        return $this->hasMany(Request::class);
     }
 }

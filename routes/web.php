@@ -1,22 +1,36 @@
 <?php
 
+use Faker\Guesser\Name;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\DoctorController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\UserController;
 Route::get('/', function () {
-    return view('index');
-})->name('home');
+    return view('welcome');
+})->name("home");
+Route::get('/singup', function() {
+return view("singup");
+})-> name('singup');
+Route::post('/register', [HomeController::class, 'register'])->name('register.submit');
+// نمایش فرم ورود
+Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 
-Route::get('/doctors', [DoctorController::class,'index'])->name('doctors.index');
-Route::get('/doctors/create', [DoctorController::class,'create'])->name('doctors.create');
-Route::post('/doctors/store', [DoctorController::class,'store'])->name('doctors.store');
-Route::get('/doctors/edit/{id}', [DoctorController::class,'edit'])->name('doctors.edit');
-Route::post('/doctors/update/{id}', [DoctorController::class,'update'])->name('doctors.update');
-Route::get('/doctors/destroy/{id}', [DoctorController::class,'confirm'])->name('doctors.destroy.confirm');
-Route::post('/doctors/destroy/{id}', [DoctorController::class,'destrory'])->name('doctors.destroy');
+// پردازش ورود (POST)
+Route::post('/login', [AuthController::class, 'login'])->name('login.submit');
+// Routeهای محافظت‌شده (فقط برای کاربران لاگین‌شده)
+Route::middleware('auth')->group(function () {
+    Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
-Route::get('/drugs', function () {
-    return view('drugs');
+    Route::get('/roler', [AuthController::class, 'roler'])->name('roler');
+    Route::get('/user/dashboard', [UserController::class, 'dashboard'])->name('user.dashboard');
+    Route::get('/user/addrequest', [UserController::class ,'addrequest'])->name('user.addrequest');
+    Route::post('/user/storerequest/', [UserController::class ,'storerequest'])->name('user.storerequest');
+    Route::get('/user/editrequest/{id}', [UserController::class ,'editrequest'])->name('user.editrequest');
+    Route::post('/user/updaterequest/', [UserController::class ,'updaterequest'])->name('user.updaterequest');
+    Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+    Route::get('/user/deleterequest/{id}', [UserController::class ,'deleterequest'])->name('user.deleterequest');
+
+
 });
-Route::get('/patients', function () {
-    return view('patient.index');
-});
+
