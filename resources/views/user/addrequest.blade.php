@@ -1,4 +1,4 @@
-@extends('leyout.admin')
+@extends('leyout.user')
 @section("content")
         <!-- Main Content -->
         <main class="flex-1 p-8">

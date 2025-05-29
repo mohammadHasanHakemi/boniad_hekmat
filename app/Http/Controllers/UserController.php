@@ -17,7 +17,7 @@ class UserController extends Controller
         // بررسی نقش کاربر برای تمام متدها
         $this->middleware(function ($request, $next) {
             if (Auth::user()->role !== 'user') {
-                abort(403, 'دسترسی غیرمجاز');
+                abort(403, 'ختسینمتسشبی');
             }
             return $next($request);
         });
@@ -25,7 +25,7 @@ class UserController extends Controller
 public function dashboard(){
     // دریافت درخواست‌های کاربر لاگین‌شده
        $requests = Auth::user()->requests()
-                ->where('isactive', true)
+                ->where('story', '!=','cancel')
                 ->get();
 
 
@@ -79,7 +79,7 @@ public function deleterequest(Request $request , $id){
 
     $thisis->update([
 
-        'isactive' => 0
+        'story' => 'cancel'
     ]);
      return redirect()->back()->with('success', 'درخواست با موفقیت غیرفعال شد');
 }

@@ -28,9 +28,17 @@ Route::middleware('auth')->group(function () {
     Route::post('/user/storerequest/', [UserController::class ,'storerequest'])->name('user.storerequest');
     Route::get('/user/editrequest/{id}', [UserController::class ,'editrequest'])->name('user.editrequest');
     Route::post('/user/updaterequest/', [UserController::class ,'updaterequest'])->name('user.updaterequest');
-    Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
     Route::get('/user/deleterequest/{id}', [UserController::class ,'deleterequest'])->name('user.deleterequest');
 
+
+
+
+
+
+
+    Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+    Route::post('/admin/userdetail/{id}', [AdminController::class ,'userdetail'])->name('admin.userdetail');
+    Route::post('/admin/epointment/{id}', [AdminController::class ,'epointment'])->name('admin.epointment');
 
 });
 

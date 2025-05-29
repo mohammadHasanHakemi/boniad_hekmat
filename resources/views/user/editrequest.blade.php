@@ -1,4 +1,4 @@
-@extends('leyout.admin')
+@extends('leyout.user')
 @section("content")
         <!-- Main Content -->
         <main class="flex-1 p-8">
@@ -26,6 +26,7 @@
                     </div>
                     <div class="flex justify-between">
                         <button type="submit" class="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition">ذخیره</button>
+                        fo
                         <a href="{{ route('user.dashboard') }}" class="bg-gray-300 text-gray-800 px-6 py-2 rounded hover:bg-gray-400 transition">انصراف</a>
                     </div>
                 </form>

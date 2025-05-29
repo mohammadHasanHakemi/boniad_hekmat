@@ -69,7 +69,7 @@
                             {{-- <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">جزئیات</th> --}}
                         </tr>
                     </thead>
-                {{-- {{ dd($doctors) }} --}}
+
                     <tbody class="bg-white divide-y divide-gray-200">
                           @if ($requests->isEmpty())
                             <p class="text-gray-600">شما هیچ درخواستی ندارید.</p>
@@ -77,18 +77,24 @@
                         @foreach ($requests as $request )
                         <tr>
                             {{-- <td><img class="w-12 h-12 rounded-full" src="{{ asset('storage/doctors/'.$doctor->avatar) }}"   /></td> --}}
-                            <td class="px-6 py-4 whitespace-nowrap">آقای {{$request->title}}</td>
-                            <td class="px-6 py-4 whitespace-nowrap">{{$request->description}}</td>
+                            <td class="px-6 py-4 whitespace-nowrap">آقای {{$request->name}}</td>
+                            <td class="px-6 py-4 whitespace-nowrap">{{$request->female}}</td>
                             <td class="px-6 py-4 whitespace-nowrap">{{$request->user->name}}</td>
-                            {{-- <td class="px-6 py-4 whitespace-nowrap flex items-center space-x-2 space-x-reverse">
+                            <td class="px-6 py-4 whitespace-nowrap flex items-center space-x-2 space-x-reverse">
 
-                                <a href="{{ route('home', ['id' => $doctor->id]) }}" class="text-blue-600 hover:text-blue-800 ml-2" title="جزئیات">
+                        <form method="POST" action="{{ route('admin.userdetail', ['id' => $request->id]) }}" class="text-blue-600 hover:text-blue-800 ml-2">
+                            @csrf
+                            <button type="submit">
+<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0zm6 0a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                            </button>
+                        </form>
+                                {{-- <a href="{{ route('admin.userdetail', ['id' => $request->id]) }}" class="text-blue-600 hover:text-blue-800 ml-2" title="جزئیات">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0zm6 0a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-                                </a>
-                                <a href="{{ route('home', ['id' => $doctor->id])}}"  class="text-red-600 hover:text-red-800" title="حذف">
+                                </a> --}}
+                                {{-- <a href="{{ route('home', ['id' => $doctor->id])}}"  class="text-red-600 hover:text-red-800" title="حذف">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
-                                </a>
-                            </td> --}}
+                                </a> --}}
+                            </td>
                         </tr>
 
                         @endforeach

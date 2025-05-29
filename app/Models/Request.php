@@ -13,10 +13,12 @@ class Request extends Model
         'user_id',
         'name',
         'female',
+        'grade',
         'nationalcode',
         'story',
         'phone',
-        'isactive'
+        'isactive',
+        'date'
     ];
 
     public function user()
