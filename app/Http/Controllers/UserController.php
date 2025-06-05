@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use app\Models\User;
 
 
@@ -17,7 +18,7 @@ class UserController extends Controller
         // بررسی نقش کاربر برای تمام متدها
         $this->middleware(function ($request, $next) {
             if (Auth::user()->role !== 'user') {
-                abort(403, 'ختسینمتسشبی');
+                redirect()->route('login');
             }
             return $next($request);
         });
@@ -44,16 +45,20 @@ $data = $request->validate([
         'female' => 'required|string|max:50',
         'phone' => 'required|string|max:15',
         'nationalcode' => 'required|string|max:10',
+        'grade' => 'required|string|max:2',
+        'imgpath' => 'image|mimes:jpeg,png,jpg,gif|max:2048'
     ]);
 
+    $path = $request->file('imgpath')->store('userimage', 'public');
+    $url = asset(Storage::url($path));
     Auth::user()->requests()->create([
         'name' => $data['name'],
         'female' => $data['female'],
         'phone' => $data['phone'],
         'nationalcode' => $data['nationalcode'],
-
+        'grade'=> $data['grade'],
+        'imgpath' => $url
     ]);
-
     return redirect()->route('user.dashboard')->with('success', 'درخواست با موفقیت ثبت شد.');
 
 }

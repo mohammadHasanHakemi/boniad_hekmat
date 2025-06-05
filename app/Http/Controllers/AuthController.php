@@ -38,19 +38,20 @@ public function login(Request $request)
         'username' => 'نام کاربری یا رمز عبور اشتباه است.',
     ])->withInput($request->only('username', 'remember'));
 }
-public function logout(Request $request)
+public function logout()
     {
-        Auth::logout();
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
-        return redirect()->route('home');
+        if (Auth::check()) {
+
+            Auth::logout();
+        }
+        return redirect('/');
     }
 
 public function roler (){
 // بررسی لاگین بودن کاربر
-        // if (!Auth::check()) {
-        //     return redirect()->route('login'); // ریدایرکت به صفحه لاگین
-        // }
+        if (!Auth::check()) {
+            return redirect()->route('login'); // ریدایرکت به صفحه لاگین
+        }
 
         // دریافت کاربر لاگین‌شده
         $user = Auth::user();

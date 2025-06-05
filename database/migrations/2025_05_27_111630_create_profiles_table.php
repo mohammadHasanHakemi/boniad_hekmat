@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('name',25);
             $table->string('female',50);
             $table->string('nationalcode',15);
+            $table->string('position',15);
             $table->string('phone',15);
             $table->boolean('isactive')->default(true);
             $table->timestamps();

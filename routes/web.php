@@ -20,7 +20,7 @@ Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [AuthController::class, 'login'])->name('login.submit');
 // Routeهای محافظت‌شده (فقط برای کاربران لاگین‌شده)
 Route::middleware('auth')->group(function () {
-    Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+    Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
     Route::get('/roler', [AuthController::class, 'roler'])->name('roler');
     Route::get('/user/dashboard', [UserController::class, 'dashboard'])->name('user.dashboard');
@@ -36,9 +36,14 @@ Route::middleware('auth')->group(function () {
 
 
 
-    Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+    Route::get('/admin', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+    Route::get('/admin/submits', [AdminController::class, 'dashboardsubmit'])->name('admin.dashboardsubmit');
+    Route::get('/admin/checks', [AdminController::class, 'dashboardcheck'])->name('admin.dashboardchek');
+    Route::get('/admin/epointmets', [AdminController::class, 'dashboardepointment'])->name('admin.dashboardepointmet');
     Route::post('/admin/userdetail/{id}', [AdminController::class ,'userdetail'])->name('admin.userdetail');
     Route::post('/admin/epointment/{id}', [AdminController::class ,'epointment'])->name('admin.epointment');
+    Route::post('/admin/storeprofile', [AdminController::class ,'storeprofile'])->name('admin.storerequest');
+    Route::get('/admin/addprofile', [AdminController::class ,'addprofile'])->name('admin.addprofile');
 
 });
 

@@ -40,4 +40,8 @@ class User extends Authenticatable
     {
         return $this->hasMany(Request::class);
     }
+        public function profile()
+    {
+        return $this->hasOne(profile::class);
+    }
 }

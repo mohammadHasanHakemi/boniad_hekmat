@@ -7,6 +7,7 @@ namespace App\Models {
      *
      * @property \Illuminate\Support\Carbon|null $updated_at
      * @property \Illuminate\Support\Carbon|null $created_at
+     * @property string|null $date
      * @property string $story
      * @property string $phone
      * @property string $nationalcode
@@ -24,6 +25,7 @@ namespace App\Models {
      * @method static \Illuminate\Database\Eloquent\Builder<Request>|Request whereNationalcode($value)
      * @method static \Illuminate\Database\Eloquent\Builder<Request>|Request wherePhone($value)
      * @method static \Illuminate\Database\Eloquent\Builder<Request>|Request whereStory($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<Request>|Request whereDate($value)
      * @method static \Illuminate\Database\Eloquent\Builder<Request>|Request whereCreatedAt($value)
      * @method static \Illuminate\Database\Eloquent\Builder<Request>|Request whereUpdatedAt($value)
      * @method static \Illuminate\Database\Eloquent\Builder<Request>|Request newModelQuery()
@@ -334,6 +336,7 @@ namespace App\Models {
      * @property int $id
      * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Request> $requests
      * @property-read int|null $requests_count
+     * @property-read \App\Models\profile $profile
      * @property-read \Illuminate\Database\Eloquent\Collection<int, \Illuminate\Notifications\DatabaseNotification> $notifications
      * @property-read int|null $notifications_count
      * @method static \Illuminate\Database\Eloquent\Builder<User>|User whereId($value)
@@ -646,6 +649,7 @@ namespace App\Models {
      * @property \Illuminate\Support\Carbon|null $created_at
      * @property bool $isactive
      * @property string $phone
+     * @property string $position
      * @property string $nationalcode
      * @property string $female
      * @property string $name
@@ -657,6 +661,7 @@ namespace App\Models {
      * @method static \Illuminate\Database\Eloquent\Builder<profile>|profile whereName($value)
      * @method static \Illuminate\Database\Eloquent\Builder<profile>|profile whereFemale($value)
      * @method static \Illuminate\Database\Eloquent\Builder<profile>|profile whereNationalcode($value)
+     * @method static \Illuminate\Database\Eloquent\Builder<profile>|profile wherePosition($value)
      * @method static \Illuminate\Database\Eloquent\Builder<profile>|profile wherePhone($value)
      * @method static \Illuminate\Database\Eloquent\Builder<profile>|profile whereIsactive($value)
      * @method static \Illuminate\Database\Eloquent\Builder<profile>|profile whereCreatedAt($value)

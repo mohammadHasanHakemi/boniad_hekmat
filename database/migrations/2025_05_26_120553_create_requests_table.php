@@ -20,7 +20,8 @@ return new class extends Migration
             $table->string('nationalcode',15);
             $table->string('phone',15);
             $table->string('story')->default('submit');
-            $table->date('date')->nullable();
+            $table->string('imgpath')->default('http://127.0.0.1:8000/storage/userimage/default.png');
+            $table->dateTime('date')->nullable();
 
             $table->timestamps();
         });

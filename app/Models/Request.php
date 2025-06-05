@@ -18,7 +18,8 @@ class Request extends Model
         'story',
         'phone',
         'isactive',
-        'date'
+        'date',
+        'imgpath'
     ];
 
     public function user()

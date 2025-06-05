@@ -8,16 +8,17 @@ class profile extends Model
 {
 
        protected $fillable = [
-        'admin_id',
+        'user_id',
         'name',
         'female',
         'nationalcode',
         'phone',
         'isactive',
+        'position'
     ];
 
     public function user()
     {
-        return $this->belongsTo(User::class,'admin_id');
+        return $this->belongsTo(User::class,'user_id');
     }
 }

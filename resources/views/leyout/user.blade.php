@@ -16,7 +16,7 @@
     <div class="min-h-screen flex">
         <!-- Sidebar -->
         <aside class="bg-gray-800 w-64 min-h-screen p-4">
-            <div class="text-white text-2xl font-bold mb-8">داشبورد</div>
+            <div class="text-white text-2xl font-bold mb-8">داشبورد کاربری</div>
             <nav>
                 <ul class="space-y-2">
                     <li>
