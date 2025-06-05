@@ -64,6 +64,9 @@
                         <tr class="bg-gray-50">
                             {{-- <th></th> --}}
                             <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            عکس
+                            </th>
+                            <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
                             نام
                             </th>
                             <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
@@ -83,6 +86,7 @@
                         @foreach ($requests as $request )
                         <tr>
                             {{-- <td><img class="w-12 h-12 rounded-full" src="{{ asset('storage/doctors/'.$doctor->avatar) }}"   /></td> --}}
+                            <td class="px-6 py-4 whitespace-nowrap"><img src="{{ $request->imgpath }}" alt="" class="w-20 h-20 rounded-full"></td>
                             <td class="px-6 py-4 whitespace-nowrap"> {{$request->name}}</td>
                             <td class="px-6 py-4 whitespace-nowrap">{{$request->female}}</td>
                             <td class="px-6 py-4 whitespace-nowrap">{{$request->phone}}</td>

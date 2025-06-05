@@ -1,5 +1,8 @@
 <?php
 
+use App\Models\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use Faker\Guesser\Name;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
@@ -27,7 +30,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/user/addrequest', [UserController::class ,'addrequest'])->name('user.addrequest');
     Route::post('/user/storerequest/', [UserController::class ,'storerequest'])->name('user.storerequest');
     Route::get('/user/editrequest/{id}', [UserController::class ,'editrequest'])->name('user.editrequest');
-    Route::post('/user/updaterequest/', [UserController::class ,'updaterequest'])->name('user.updaterequest');
+    Route::post('/user/updaterequest/{id}', [UserController::class ,'updaterequest'])->name('user.updaterequest');
     Route::get('/user/deleterequest/{id}', [UserController::class ,'deleterequest'])->name('user.deleterequest');
 
 
@@ -46,4 +49,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/admin/addprofile', [AdminController::class ,'addprofile'])->name('admin.addprofile');
 
 });
+
+
+
 
